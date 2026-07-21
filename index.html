@@ -442,7 +442,7 @@
 
           // 避免短时间连续请求过快
           if (page <= pageCount) {
-            await sleep(350);
+            await sleep(1500);
           }
         } while (page <= pageCount);
 
