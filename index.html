@@ -1,73 +1,671 @@
 <!doctype html>
-<html lang="ja">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>楽天商品取得</title>
-</head>
-<body>
-  <h1>楽天商品取得</h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <button id="startButton">商品を取得</button>
-  <pre id="result"></pre>
+  <title>楽天商品情報取得ツール</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Microsoft YaHei",
+        sans-serif;
+      background: #f5f5f7;
+      color: #222;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    .description {
+      margin-top: 0;
+      color: #666;
+    }
+
+    .panel {
+      padding: 24px;
+      margin-bottom: 22px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #555;
+      border-color: transparent;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 11px 18px;
+      border: 0;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    #searchButton {
+      background: #222;
+      color: white;
+    }
+
+    #downloadButton,
+    #copyButton {
+      background: #e7e7ea;
+      color: #222;
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    #status {
+      margin-top: 16px;
+      white-space: pre-wrap;
+      color: #555;
+    }
+
+    .error {
+      color: #c40000 !important;
+    }
+
+    .success {
+      color: #087b27 !important;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th,
+    td {
+      padding: 11px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: #eee;
+      white-space: nowrap;
+    }
+
+    td.number {
+      width: 60px;
+      text-align: center;
+    }
+
+    td.item-code {
+      white-space: nowrap;
+    }
+
+    td.image-cell {
+      width: 110px;
+    }
+
+    .product-image {
+      display: block;
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      background: white;
+    }
+
+    .empty-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 90px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      color: #999;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>楽天商品情報取得ツール</h1>
+
+  <p class="description">
+    指定した店舗と商品シリーズから、商品名・商品番号・主画像を取得します。
+  </p>
+
+  <section class="panel">
+    <div class="form-grid">
+      <div class="field">
+        <label for="applicationId">Application ID</label>
+        <input
+          id="applicationId"
+          type="text"
+          placeholder="Application IDを入力"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="field">
+        <label for="accessKey">Access Key</label>
+        <input
+          id="accessKey"
+          type="password"
+          placeholder="Access Keyを入力"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="field">
+        <label for="shopCode">店铺代码 shopCode</label>
+        <input
+          id="shopCode"
+          type="text"
+          placeholder="例如：ink48"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="field">
+        <label for="keyword">商品系列关键词</label>
+        <input
+          id="keyword"
+          type="text"
+          placeholder="例如：BCI-381"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="field full">
+        <label for="excludeKeyword">排除关键词（可不填）</label>
+        <input
+          id="excludeKeyword"
+          type="text"
+          placeholder="例如：純正 中古"
+          autocomplete="off"
+        >
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="searchButton">开始抓取</button>
+
+      <button id="downloadButton" disabled>
+        导出 CSV
+      </button>
+
+      <button id="copyButton" disabled>
+        复制 JSON
+      </button>
+    </div>
+
+    <div id="status">等待开始。</div>
+  </section>
+
+  <section class="panel">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>商品主图</th>
+            <th>商品名</th>
+            <th>商品番号</th>
+          </tr>
+        </thead>
+
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </section>
 
   <script>
-    const APPLICATION_ID = "你的Application ID";
-    const ACCESS_KEY = "你的Access Key";
-    const SHOP_CODE = "目标店铺代码";
-    const KEYWORD = "商品系列关键词";
+    const API_ENDPOINT =
+      "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701";
 
-    document
-      .getElementById("startButton")
-      .addEventListener("click", async () => {
-        const resultElement = document.getElementById("result");
+    const searchButton = document.getElementById("searchButton");
+    const downloadButton = document.getElementById("downloadButton");
+    const copyButton = document.getElementById("copyButton");
+    const resultBody = document.getElementById("resultBody");
+    const statusElement = document.getElementById("status");
 
-        const params = new URLSearchParams({
-          applicationId: APPLICATION_ID,
-          accessKey: ACCESS_KEY,
-          shopCode: SHOP_CODE,
-          keyword: KEYWORD,
-          hits: "30",
-          format: "json"
-        });
+    let currentProducts = [];
 
-        const apiUrl =
-          "https://openapi.rakuten.co.jp/services/api/IchibaItem/Search/20220601?" +
-          params.toString();
+    searchButton.addEventListener("click", fetchAllProducts);
+    downloadButton.addEventListener("click", downloadCSV);
+    copyButton.addEventListener("click", copyJSON);
 
-        try {
-          const response = await fetch(apiUrl);
+    async function fetchAllProducts() {
+      const applicationId =
+        document.getElementById("applicationId").value.trim();
 
-          if (!response.ok) {
+      const accessKey =
+        document.getElementById("accessKey").value.trim();
+
+      const shopCode =
+        document.getElementById("shopCode").value.trim();
+
+      const keyword =
+        document.getElementById("keyword").value.trim();
+
+      const excludeKeyword =
+        document.getElementById("excludeKeyword").value.trim();
+
+      if (!applicationId) {
+        showError("Application ID を入力してください。");
+        return;
+      }
+
+      if (!accessKey) {
+        showError("Access Key を入力してください。");
+        return;
+      }
+
+      if (!shopCode) {
+        showError("店铺代码 shopCode を入力してください。");
+        return;
+      }
+
+      if (!keyword) {
+        showError("商品系列关键词を入力してください。");
+        return;
+      }
+
+      currentProducts = [];
+      resultBody.innerHTML = "";
+
+      searchButton.disabled = true;
+      downloadButton.disabled = true;
+      copyButton.disabled = true;
+
+      let page = 1;
+      let pageCount = 1;
+
+      try {
+        do {
+          showStatus(
+            `正在抓取第 ${page} 页……\n` +
+            `当前已获取 ${currentProducts.length} 件商品。`
+          );
+
+          const params = new URLSearchParams({
+            applicationId,
+            accessKey,
+            shopCode,
+            keyword,
+
+            // 每页最多30件
+            hits: "30",
+
+            page: String(page),
+
+            // 使用更简单的JSON结构
+            format: "json",
+            formatVersion: "2",
+
+            // 只请求需要的字段
+            elements: [
+              "count",
+              "page",
+              "pageCount",
+              "itemName",
+              "itemCode",
+              "mediumImageUrls"
+            ].join(","),
+
+            // 仅返回有图片的商品
+            imageFlag: "1",
+
+            // 包含在售和停售商品
+            availability: "0"
+          });
+
+          if (excludeKeyword) {
+            params.set("NGKeyword", excludeKeyword);
+          }
+
+          const response = await fetch(
+            `${API_ENDPOINT}?${params.toString()}`
+          );
+
+          const responseText = await response.text();
+
+          let data;
+
+          try {
+            data = JSON.parse(responseText);
+          } catch {
             throw new Error(
-              `HTTP ${response.status}: ${await response.text()}`
+              `API返回的内容不是JSON。\n\n${responseText}`
             );
           }
 
-          const data = await response.json();
+          if (!response.ok || data.error) {
+            const description =
+              data.error_description ||
+              data.error ||
+              `HTTP ${response.status}`;
 
-          const products = (data.Items || []).map(entry => {
-            const item = entry.Item || entry;
+            throw new Error(description);
+          }
 
-            return {
-              商品名: item.itemName || "",
-              商品番号:
-                item.itemCode?.split(":").slice(1).join(":") ||
-                item.itemCode ||
-                "",
-              商品主图:
-                item.mediumImageUrls?.[0]?.imageUrl || ""
-            };
-          });
+          const items = Array.isArray(data.items)
+            ? data.items
+            : Array.isArray(data.Items)
+              ? data.Items
+              : [];
 
-          resultElement.textContent =
-            JSON.stringify(products, null, 2);
+          for (const rawItem of items) {
+            // 同时兼容 formatVersion 1 和 2
+            const item = rawItem.Item || rawItem.item || rawItem;
 
-          console.table(products);
-        } catch (error) {
-          resultElement.textContent = error.message;
-          console.error(error);
+            const fullItemCode = String(item.itemCode || "");
+
+            currentProducts.push({
+              商品名: String(item.itemName || ""),
+              商品番号: removeShopCode(fullItemCode),
+              商品主图: getMainImage(item.mediumImageUrls)
+            });
+          }
+
+          pageCount = Math.min(
+            Number(data.pageCount || data.PageCount || 1),
+            100
+          );
+
+          page += 1;
+
+          // 避免短时间连续请求过快
+          if (page <= pageCount) {
+            await sleep(350);
+          }
+        } while (page <= pageCount);
+
+        // 按商品番号去重
+        currentProducts = removeDuplicates(currentProducts);
+
+        renderProducts(currentProducts);
+
+        showSuccess(
+          `抓取完成，共取得 ${currentProducts.length} 件商品。`
+        );
+
+        downloadButton.disabled = currentProducts.length === 0;
+        copyButton.disabled = currentProducts.length === 0;
+      } catch (error) {
+        console.error(error);
+
+        showError(
+          "抓取失败：\n" +
+          (error instanceof Error ? error.message : String(error))
+        );
+      } finally {
+        searchButton.disabled = false;
+      }
+    }
+
+    function removeShopCode(itemCode) {
+      const colonIndex = itemCode.indexOf(":");
+
+      if (colonIndex === -1) {
+        return itemCode;
+      }
+
+      return itemCode.slice(colonIndex + 1);
+    }
+
+    function getMainImage(imageUrls) {
+      if (!Array.isArray(imageUrls) || imageUrls.length === 0) {
+        return "";
+      }
+
+      const firstImage = imageUrls[0];
+
+      if (typeof firstImage === "string") {
+        return firstImage;
+      }
+
+      return (
+        firstImage.imageUrl ||
+        firstImage.imageURL ||
+        firstImage.url ||
+        ""
+      );
+    }
+
+    function removeDuplicates(products) {
+      const map = new Map();
+
+      for (const product of products) {
+        const key =
+          product.商品番号 ||
+          `${product.商品名}|${product.商品主图}`;
+
+        if (!map.has(key)) {
+          map.set(key, product);
         }
+      }
+
+      return [...map.values()];
+    }
+
+    function renderProducts(products) {
+      resultBody.innerHTML = "";
+
+      if (products.length === 0) {
+        resultBody.innerHTML = `
+          <tr>
+            <td colspan="4">符合条件的商品为 0 件。</td>
+          </tr>
+        `;
+        return;
+      }
+
+      products.forEach((product, index) => {
+        const row = document.createElement("tr");
+
+        const numberCell = document.createElement("td");
+        numberCell.className = "number";
+        numberCell.textContent = String(index + 1);
+
+        const imageCell = document.createElement("td");
+        imageCell.className = "image-cell";
+
+        if (product.商品主图) {
+          const link = document.createElement("a");
+          link.href = product.商品主图;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+
+          const image = document.createElement("img");
+          image.className = "product-image";
+          image.src = product.商品主图;
+          image.alt = product.商品名;
+          image.loading = "lazy";
+
+          link.appendChild(image);
+          imageCell.appendChild(link);
+        } else {
+          const emptyImage = document.createElement("div");
+          emptyImage.className = "empty-image";
+          emptyImage.textContent = "无图片";
+
+          imageCell.appendChild(emptyImage);
+        }
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = product.商品名;
+
+        const codeCell = document.createElement("td");
+        codeCell.className = "item-code";
+        codeCell.textContent = product.商品番号;
+
+        row.append(
+          numberCell,
+          imageCell,
+          nameCell,
+          codeCell
+        );
+
+        resultBody.appendChild(row);
       });
+    }
+
+    function downloadCSV() {
+      if (currentProducts.length === 0) {
+        return;
+      }
+
+      const rows = [
+        ["商品名", "商品番号", "商品主图"],
+        ...currentProducts.map(product => [
+          product.商品名,
+          product.商品番号,
+          product.商品主图
+        ])
+      ];
+
+      const csv =
+        "\uFEFF" +
+        rows
+          .map(row => row.map(escapeCSV).join(","))
+          .join("\r\n");
+
+      const blob = new Blob(
+        [csv],
+        { type: "text/csv;charset=utf-8" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      const shopCode =
+        document.getElementById("shopCode").value.trim();
+
+      const keyword =
+        document.getElementById("keyword").value.trim();
+
+      link.href = url;
+      link.download =
+        `${sanitizeFileName(shopCode)}_` +
+        `${sanitizeFileName(keyword)}_商品一覧.csv`;
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      URL.revokeObjectURL(url);
+    }
+
+    async function copyJSON() {
+      const text = JSON.stringify(currentProducts, null, 2);
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showSuccess(
+          `已复制 ${currentProducts.length} 件商品的JSON数据。`
+        );
+      } catch {
+        showError("复制失败，请允许网页访问剪贴板。");
+      }
+    }
+
+    function escapeCSV(value) {
+      const text = String(value ?? "");
+
+      return `"${text.replaceAll('"', '""')}"`;
+    }
+
+    function sanitizeFileName(value) {
+      return String(value || "products")
+        .replace(/[\\/:*?"<>|]/g, "_");
+    }
+
+    function sleep(milliseconds) {
+      return new Promise(resolve => {
+        setTimeout(resolve, milliseconds);
+      });
+    }
+
+    function showStatus(message) {
+      statusElement.className = "";
+      statusElement.textContent = message;
+    }
+
+    function showSuccess(message) {
+      statusElement.className = "success";
+      statusElement.textContent = message;
+    }
+
+    function showError(message) {
+      statusElement.className = "error";
+      statusElement.textContent = message;
+    }
   </script>
 </body>
 </html>
