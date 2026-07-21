@@ -2,10 +2,72 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>楽天商品情報取得ツール</title>
+  <title>楽天商品取得</title>
 </head>
 <body>
-  <h1>楽天商品情報取得ツール</h1>
-  <p>楽天市場の商品情報を整理するための個人用ツールです。</p>
+  <h1>楽天商品取得</h1>
+
+  <button id="startButton">商品を取得</button>
+  <pre id="result"></pre>
+
+  <script>
+    const APPLICATION_ID = "你的Application ID";
+    const ACCESS_KEY = "你的Access Key";
+    const SHOP_CODE = "目标店铺代码";
+    const KEYWORD = "商品系列关键词";
+
+    document
+      .getElementById("startButton")
+      .addEventListener("click", async () => {
+        const resultElement = document.getElementById("result");
+
+        const params = new URLSearchParams({
+          applicationId: APPLICATION_ID,
+          accessKey: ACCESS_KEY,
+          shopCode: SHOP_CODE,
+          keyword: KEYWORD,
+          hits: "30",
+          format: "json"
+        });
+
+        const apiUrl =
+          "https://openapi.rakuten.co.jp/services/api/IchibaItem/Search/20220601?" +
+          params.toString();
+
+        try {
+          const response = await fetch(apiUrl);
+
+          if (!response.ok) {
+            throw new Error(
+              `HTTP ${response.status}: ${await response.text()}`
+            );
+          }
+
+          const data = await response.json();
+
+          const products = (data.Items || []).map(entry => {
+            const item = entry.Item || entry;
+
+            return {
+              商品名: item.itemName || "",
+              商品番号:
+                item.itemCode?.split(":").slice(1).join(":") ||
+                item.itemCode ||
+                "",
+              商品主图:
+                item.mediumImageUrls?.[0]?.imageUrl || ""
+            };
+          });
+
+          resultElement.textContent =
+            JSON.stringify(products, null, 2);
+
+          console.table(products);
+        } catch (error) {
+          resultElement.textContent = error.message;
+          console.error(error);
+        }
+      });
+  </script>
 </body>
 </html>
