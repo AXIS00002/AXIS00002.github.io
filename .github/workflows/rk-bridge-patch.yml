@@ -1,0 +1,66 @@
+name: Patch Rakuten bridge
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.rk-bridge-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Patch index.html
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          if "type: 'RK_CHECK_PRODUCTS'" in text:
+              print('Bridge already exists.')
+              raise SystemExit(0)
+
+          marker = """        showSuccess(
+          `获取完成：API 返回 ${rawCount} 条，去重后 ${products.length} 件。\\n` +
+          `已包含商品管理番号、商品 URL、主图和 API 商品说明。`
+        );"""
+
+          replacement = marker + """
+
+        window.postMessage(
+          {
+            type: 'RK_CHECK_PRODUCTS',
+            sourceName: '楽天商品API',
+            items: products
+          },
+          window.location.origin
+        );"""
+
+          count = text.count(marker)
+          if count != 1:
+              raise SystemExit(f'Expected exactly one target block, found {count}.')
+
+          path.write_text(text.replace(marker, replacement, 1), encoding='utf-8')
+          PY
+
+      - name: Commit patch
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "No change needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Connect Rakuten API results to userscript"
+          git push
