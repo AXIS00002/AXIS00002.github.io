@@ -144,11 +144,10 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>楽天商品批量获取与检查清单</h1>
+  <h1>楽天商品API</h1>
   <p class="sub">
-    从指定店铺与关键词获取商品名、商品管理番号、商品 URL、主图和 API 商品说明，
-    并导出可用于 Tampermonkey 批量详情检查器的 CSV。<br>
-    注意：公开商品搜索 API 不返回 RMS 的“商品番号”，因此该列先留空，之后由商品页检查器提取或人工补充。
+    商品名、商品管理番号、商品 URL、主图和 API 商品说明获取<br>
+    API 不返回 RMS 的“商品番号”
   </p>
 
   <section class="panel">
@@ -194,15 +193,15 @@
         <select id="delayMs">
           <option value="1500">1.5 秒</option>
           <option value="2500" selected>2.5 秒（推荐）</option>
-          <option value="4000">4 秒（更稳）</option>
+          <option value="4000">4 秒</option>
         </select>
       </div>
 
       <div class="field">
         <label for="availability">商品状态</label>
         <select id="availability">
-          <option value="0" selected>在售与停售都获取</option>
-          <option value="1">只获取可购买商品</option>
+          <option value="0" selected>在售与停售</option>
+          <option value="1">可购买商品</option>
         </select>
       </div>
     </div>
@@ -210,7 +209,7 @@
     <div class="buttons">
       <button id="startButton" class="primary">开始获取</button>
       <button id="stopButton" class="danger" disabled>停止</button>
-      <button id="csvButton" class="secondary" disabled>导出检查用 CSV</button>
+      <button id="csvButton" class="secondary" disabled>导出CSV</button>
       <button id="jsonButton" class="secondary" disabled>复制 JSON</button>
       <button id="urlButton" class="secondary" disabled>复制商品 URL</button>
       <button id="clearButton" class="secondary">清空结果</button>
