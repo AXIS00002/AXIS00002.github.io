@@ -414,11 +414,20 @@
       } while (page <= pageCount);
 
       if (!stopRequested) {
-        showSuccess(
-          `获取完成：API 返回 ${rawCount} 条，去重后 ${products.length} 件。\n` +
-          `已包含商品管理番号、商品 URL、主图和 API 商品说明。`
-        );
-      }
+  showSuccess(
+    `获取完成：API 返回 ${rawCount} 条，去重后 ${products.length} 件。\n` +
+    `已包含商品管理番号、商品 URL、主图和 API 商品说明。`
+  );
+
+  window.postMessage(
+    {
+      type: 'RK_CHECK_PRODUCTS',
+      sourceName: '楽天商品API',
+      items: products
+    },
+    window.location.origin
+  );
+}
     } catch (error) {
       console.error(error);
       showError(
