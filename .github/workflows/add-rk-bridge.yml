@@ -57,3 +57,5 @@ jobs:
           git add index.html
           git commit -m "Connect Rakuten API results to userscript"
           git push
+
+# Triggered after workflow installation
