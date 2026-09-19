@@ -1,735 +1,120 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>楽天 code 工作台</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 28px 18px;
-      background: #f5f5f7;
-      color: #1d1d1f;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "Microsoft YaHei", "Noto Sans SC", sans-serif;
-    }
-    .wrap { max-width: 1400px; margin: 0 auto; }
-    h1 { margin: 0 0 6px; font-size: 28px; }
-    .sub { margin: 0 0 20px; color: #666; line-height: 1.7; }
-    .panel {
-      margin-bottom: 18px;
-      padding: 22px;
-      background: #fff;
-      border: 1px solid #e3e3e8;
-      border-radius: 14px;
-      box-shadow: 0 8px 28px rgba(0,0,0,.06);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .field { display: flex; flex-direction: column; gap: 6px; }
-    .field.full { grid-column: 1 / -1; }
-    label { font-size: 14px; font-weight: 700; }
-    input, select {
-      width: 100%;
-      padding: 11px 12px;
-      border: 1px solid #cfcfd5;
-      border-radius: 8px;
-      background: #fff;
-      font-size: 15px;
-    }
-    input:focus, select:focus {
-      outline: 2px solid #555;
-      outline-offset: 1px;
-    }
-    .hint { color: #777; font-size: 12px; line-height: 1.55; }
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    button {
-      border: 0;
-      border-radius: 8px;
-      padding: 11px 17px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    button.primary { background: #1d1d1f; color: #fff; }
-    button.secondary { background: #e9e9ee; color: #1d1d1f; }
-    button.danger { background: #fff0f0; color: #b00020; }
-    button:disabled { opacity: .45; cursor: not-allowed; }
-    #status {
-      margin-top: 16px;
-      padding: 12px 14px;
-      background: #f6f6f8;
-      border-radius: 8px;
-      white-space: pre-wrap;
-      line-height: 1.65;
-    }
-    #status.success { background: #edf9f0; color: #176b2c; }
-    #status.error { background: #fff0f0; color: #b00020; }
-    .summary {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .chip {
-      padding: 7px 10px;
-      background: #f0f0f4;
-      border-radius: 999px;
-      font-size: 13px;
-    }
-    .table-wrap {
-      overflow: auto;
-      max-height: 72vh;
-      border: 1px solid #dedee3;
-      border-radius: 10px;
-    }
-    table {
-      width: 100%;
-      min-width: 1180px;
-      border-collapse: collapse;
-      background: #fff;
-    }
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #e5e5ea;
-      border-right: 1px solid #eeeeF2;
-      text-align: left;
-      vertical-align: top;
-      font-size: 13px;
-    }
-    th {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      background: #eeeeF2;
-      white-space: nowrap;
-    }
-    tr:hover td { background: #fafafd; }
-    .img {
-      display: block;
-      width: 96px;
-      height: 96px;
-      object-fit: contain;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      background: #fff;
-    }
-    .name { min-width: 320px; line-height: 1.55; }
-    .caption {
-      min-width: 360px;
-      max-width: 520px;
-      max-height: 120px;
-      overflow: auto;
-      white-space: pre-wrap;
-      line-height: 1.5;
-    }
-    .code { white-space: nowrap; font-family: ui-monospace, Consolas, monospace; }
-    a { color: #0066cc; word-break: break-all; }
-    .warn { color: #b35c00; font-weight: 700; }
-    @media (max-width: 760px) {
-      .grid { grid-template-columns: 1fr; }
-      .field.full { grid-column: auto; }
-      h1 { font-size: 23px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>乐天 · code 补录资料</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;color:#24312e;background:#f5f7f6;font-size:14px}*{box-sizing:border-box}body{margin:0}main{max-width:1440px;padding:32px 24px;margin:auto}h1{font-size:26px;letter-spacing:-.5px;margin:0 0 8px}h2{font-size:17px;margin:0 0 14px}p{line-height:1.7}.muted{color:#697871}header{margin-bottom:24px}.panel{background:#fff;border:1px solid #dce4df;border-radius:12px;padding:20px;margin-bottom:18px}.row{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:7px;flex:1;min-width:160px}label{font-weight:600}input,select,button{font:inherit;border-radius:7px;padding:10px 12px}input,select{border:1px solid #c7d3cc;background:#fff;min-width:0;color:inherit}input:focus,select:focus,button:focus-visible,summary:focus-visible{outline:2px solid #15734d;outline-offset:2px}button{border:1px solid #ccd8d0;background:#fff;color:#24312e;cursor:pointer;white-space:nowrap}button.primary{background:#176849;border-color:#176849;color:#fff}button:disabled{opacity:.45;cursor:default}details>summary{cursor:pointer;color:#52685b}details .row{margin-top:16px}.credentials{margin-bottom:18px}.advanced{margin-top:16px}#status{margin:16px 0 0;color:#53665b;white-space:pre-wrap}#status.error{color:#b42318}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.toolbar input{margin-left:auto;min-width:200px}.counter{font-weight:600;margin-right:8px}.table-wrap{overflow:auto;max-height:62vh;border:1px solid #e0e6e2;border-radius:8px}table{width:100%;min-width:840px;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #e7ece9;padding:12px;vertical-align:top}th{position:sticky;top:0;background:#f3f7f4;font-weight:600;z-index:1}tr.active td{background:#edf7f0}th:first-child,td:first-child{width:40px}input[type=checkbox]{accent-color:#176849;width:17px;height:17px;cursor:pointer}.name{max-width:480px;line-height:1.65}.thumb{width:64px;height:64px;object-fit:contain;border:1px solid #eef0ee;border-radius:6px}.id{font-family:ui-monospace,Consolas,monospace;white-space:nowrap}a{color:#146a49;overflow-wrap:anywhere}.title-button{border:0;background:none;padding:0;white-space:normal;text-align:left;line-height:1.65;color:#146a49}.empty{text-align:center;padding:52px;color:#6d7f74}.detail-head{display:flex;align-items:center;justify-content:space-between;gap:12px}#detail[hidden]{display:none}.detail-grid{display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px}.images{display:flex;gap:8px;flex-wrap:wrap;align-content:start}.images img{width:100px;height:100px;object-fit:contain;border:1px solid #e4eae6;border-radius:7px}dl{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;margin:0}dt{color:#6a7a70}dd{margin:0;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;line-height:1.8;background:#f7f9f7;padding:16px;border-radius:8px;max-height:440px;overflow:auto}footer{font-size:12px;color:#748279;line-height:1.8;padding:0 2px}footer a{color:inherit}@media(max-width:700px){main{padding:20px 12px}.panel{padding:15px}.field{min-width:100%;flex:1}.detail-grid{grid-template-columns:1fr}.toolbar input{width:100%;margin-left:0}dl{grid-template-columns:105px minmax(0,1fr)}h1{font-size:23px}}
+</style>
 </head>
-<body>
-<div class="wrap">
-  <h1>楽天 code 工作台</h1>
-  <p class="sub">
-    商品名、商品管理番号、商品 URL、主图和 API 商品说明获取<br>
-    API 不返回 RMS 的“商品番号”
-  </p>
-
-  <section class="panel">
-    <div class="grid">
-      <div class="field">
-        <label for="applicationId">Application ID</label>
-        <input id="applicationId" type="text" autocomplete="off" placeholder="输入 Application ID">
-      </div>
-
-      <div class="field">
-        <label for="accessKey">Access Key</label>
-        <input id="accessKey" type="password" autocomplete="off" placeholder="输入 Access Key">
-      </div>
-
-      <div class="field">
-        <label for="shopCode">店铺代码 shopCode</label>
-        <input id="shopCode" type="text" autocomplete="off" placeholder="">
-        <div class="hint">填写店铺代码，例如 lovestyle；也可粘贴该店商品 URL</div>
-      </div>
-
-      <div class="field">
-        <label for="keyword">商品系列关键词</label>
-        <input id="keyword" type="text" autocomplete="off" placeholder="例如：BCI-380">
-      </div>
-
-      <div class="field">
-        <label for="ngKeyword">排除关键词（可不填）</label>
-        <input id="ngKeyword" type="text" autocomplete="off" placeholder="例如：クリーニング 洗浄">
-      </div>
-
-      <div class="field">
-        <label for="maxPages">最大获取页数</label>
-        <select id="maxPages">
-          <option value="5">5 页（最多 150 件）</option>
-          <option value="10" selected>10 页（最多 300 件）</option>
-          <option value="30">30 页（最多 900 件）</option>
-          <option value="100">100 页（API 上限）</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="delayMs">翻页间隔</label>
-        <select id="delayMs">
-          <option value="1500">1.5 秒</option>
-          <option value="2500" selected>2.5 秒（推荐）</option>
-          <option value="4000">4 秒</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="availability">商品状态</label>
-        <select id="availability">
-          <option value="0" selected>在售与停售</option>
-          <option value="1">可购买商品</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <button id="startButton" class="primary">开始获取</button>
-      <button id="stopButton" class="danger" disabled>停止</button>
-      <button id="csvButton" class="secondary" disabled>导出CSV</button>
-      <button id="jsonButton" class="secondary" disabled>复制 JSON</button>
-      <button id="urlButton" class="secondary" disabled>复制商品 URL</button>
-      <button id="clearButton" class="secondary">清空结果</button>
-    </div>
-
-    <div id="status">等待开始。</div>
-  </section>
-
-  <section class="panel">
-    <div class="summary">
-      <span class="chip">结果：<strong id="resultCount">0</strong></span>
-      <span class="chip">有主图：<strong id="imageCount">0</strong></span>
-      <span class="chip">缺少主图：<strong id="missingImageCount">0</strong></span>
-      <span class="chip">重复商品管理番号：<strong id="duplicateCount">0</strong></span>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>主图</th>
-          <th>商品名</th>
-          <th>商品番号</th>
-          <th>商品管理番号</th>
-          <th>商品 URL</th>
-          <th>API 商品说明</th>
-        </tr>
-        </thead>
-        <tbody id="resultBody">
-          <tr><td colspan="7">尚未获取。</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+<body><main>
+<header><h1>乐天 · code 补录资料</h1><div class="muted">按店铺和型号获取商品信息，选中后直接复制，用于补录 code。</div></header>
+<section class="panel" aria-label="商品查询">
+<details class="credentials" id="credentials" open><summary>API 设置</summary><div class="row">
+ <div class="field"><label for="applicationId">Application ID</label><input id="applicationId" autocomplete="off" placeholder="输入 Application ID"></div>
+ <div class="field"><label for="accessKey">Access Key</label><input id="accessKey" type="password" autocomplete="off" placeholder="输入 Access Key"></div>
+</div></details>
+<form id="searchForm"><div class="row">
+ <div class="field"><label for="shop">店铺</label><input id="shop" value="lovestyle" placeholder="店铺代码或店铺 URL" required></div>
+ <div class="field"><label for="keyword">型号／关键词</label><input id="keyword" placeholder="例如 BCI-330（可留空）"></div>
+ <button id="search" class="primary" type="submit">获取商品</button><button id="stop" type="button" disabled>停止</button>
 </div>
-
+<details class="advanced"><summary>更多条件</summary><div class="row">
+ <div class="field"><label for="excluded">排除关键词</label><input id="excluded" placeholder="例如 洗浄"></div>
+ <div class="field"><label for="maxPages">最多获取</label><select id="maxPages"><option value="10">10 页 / 300 件</option><option value="30">30 页 / 900 件</option><option value="100">100 页 / 3000 件</option></select></div>
+ <div class="field"><label for="availability">商品状态</label><select id="availability"><option value="0">全部</option><option value="1">可购买</option></select></div>
+ <div class="field"><label for="carrier">说明版本</label><select id="carrier"><option value="0">PC</option><option value="2">手机版</option></select></div>
+</div></details></form>
+<p id="status" role="status" aria-live="polite">填写 API 设置后即可获取。关键词留空时按店铺查询。</p>
+</section>
+<section class="panel" aria-label="商品结果">
+<div class="toolbar"><span class="counter" id="counter">0 件商品</span><button id="copyUrls" disabled>复制 URL</button><button id="copyInfo" class="primary" disabled>复制补录资料</button><button id="exportCsv" disabled>导出 CSV</button><input id="filter" aria-label="筛选已获取结果" placeholder="筛选已获取结果"></div>
+<div class="table-wrap"><table><thead><tr><th><input id="selectAll" type="checkbox" aria-label="选择全部筛选结果" disabled></th><th>图片</th><th>商品管理番号 / URL ID</th><th>商品名</th><th>价格</th><th>资料</th></tr></thead><tbody id="results"><tr><td colspan="6" class="empty">获取后，商品会显示在这里。</td></tr></tbody></table></div>
+</section>
+<section id="detail" class="panel" hidden aria-label="商品详情"><div class="detail-head"><h2>商品详情</h2><button id="copyOne">复制这件商品资料</button></div><div class="detail-grid"><div id="images" class="images"></div><div><dl id="facts"></dl><h3>API 商品说明</h3><pre id="caption"></pre></div></div></section>
+<footer>仅获取 API 返回的信息，不生成或推测内部 code、各颜色数量和自由选择项。商品说明中包含的型号、数量与顔料／染料文字会原样保留。<br>API 设置仅用于本次页面请求，不保存在本机。<a href="https://webservice.rakuten.co.jp/documentation/ichiba-item-search" target="_blank" rel="noopener noreferrer">乐天 API 文档</a></footer>
 <script>
-(() => {
-  'use strict';
-
-  const API_ENDPOINT =
-    'https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701';
-
-  const $ = id => document.getElementById(id);
-
-  const startButton = $('startButton');
-  const stopButton = $('stopButton');
-  const csvButton = $('csvButton');
-  const jsonButton = $('jsonButton');
-  const urlButton = $('urlButton');
-  const clearButton = $('clearButton');
-  const status = $('status');
-  const resultBody = $('resultBody');
-
-  let products = [];
-  let stopRequested = false;
-
-  startButton.addEventListener('click', fetchAllProducts);
-  stopButton.addEventListener('click', () => {
-    stopRequested = true;
-    showStatus('已请求停止，将在当前请求结束后停止。');
-  });
-  csvButton.addEventListener('click', downloadCsv);
-  jsonButton.addEventListener('click', copyJson);
-  urlButton.addEventListener('click', copyUrls);
-  clearButton.addEventListener('click', clearResults);
-
-  async function fetchAllProducts() {
-    const applicationId = $('applicationId').value.trim();
-    const accessKey = $('accessKey').value.trim();
-    const shopInput = $('shopCode').value.trim();
-    const shopCode = shopInput.startsWith('https://item.rakuten.co.jp/') ? new URL(shopInput).pathname.split('/')[1] : shopInput;
-    const keyword = $('keyword').value.trim();
-    const ngKeyword = $('ngKeyword').value.trim();
-    const maxPages = Number($('maxPages').value);
-    const delayMs = Number($('delayMs').value);
-    const availability = $('availability').value;
-
-    if (!applicationId || !accessKey || !shopCode || !keyword) {
-      showError('请填写 Application ID、Access Key、shopCode 和商品系列关键词。');
-      return;
-    }
-
-    products = [];
-    stopRequested = false;
-    render();
-    setRunning(true);
-
-    let page = 1;
-    let pageCount = 1;
-    let rawCount = 0;
-
-    try {
-      do {
-        if (stopRequested) {
-          showStatus(`已停止。当前保留 ${products.length} 件商品。`);
-          break;
-        }
-
-        showStatus(
-          `正在获取第 ${page} 页……\n` +
-          `当前已整理 ${products.length} 件商品。`
-        );
-
-        const params = new URLSearchParams({
-          applicationId,
-          accessKey,
-          shopCode,
-          keyword,
-          hits: '30',
-          page: String(page),
-          format: 'json',
-          formatVersion: '2',
-          imageFlag: '1',
-          availability,
-          elements: [
-            'count',
-            'page',
-            'pageCount',
-            'itemName',
-            'itemCode',
-            'itemUrl',
-            'mediumImageUrls',
-            'itemCaption',
-            'catchcopy',
-            'availability'
-          ].join(',')
-        });
-
-        if (ngKeyword) {
-          params.set('NGKeyword', ngKeyword);
-        }
-
-        const response = await fetchWithRetry(
-          `${API_ENDPOINT}?${params.toString()}`,
-          5
-        );
-
-        const text = await response.text();
-        let data;
-
-        try {
-          data = JSON.parse(text);
-        } catch {
-          throw new Error(`API 返回的不是 JSON：\n${text.slice(0, 800)}`);
-        }
-
-        if (!response.ok || data.error) {
-          throw new Error(
-            data.error_description ||
-            data.error ||
-            `HTTP ${response.status}`
-          );
-        }
-
-        const items = Array.isArray(data.items)
-          ? data.items
-          : Array.isArray(data.Items)
-            ? data.Items
-            : [];
-
-        rawCount += items.length;
-
-        for (const raw of items) {
-          const item = raw.Item || raw.item || raw;
-          const fullItemCode = String(item.itemCode || '');
-          const managementNumber = removeShopPrefix(fullItemCode);
-          const itemUrl = String(item.itemUrl || '');
-          const imageUrl = getFirstImage(item.mediumImageUrls);
-          const apiCaption = cleanText(
-            [item.catchcopy, item.itemCaption]
-              .filter(Boolean)
-              .join('\n')
-          );
-
-          products.push({
-            商品名: cleanText(item.itemName || ''),
-            商品番号: '',
-            商品管理番号: managementNumber,
-            商品URL: itemUrl,
-            商品主图: stripDownsize(imageUrl),
-            API商品说明: apiCaption,
-            在售状态: String(item.availability ?? '')
-          });
-        }
-
-        products = dedupeProducts(products);
-
-        pageCount = Math.min(
-          Number(data.pageCount || data.PageCount || 1),
-          maxPages,
-          100
-        );
-
-        render();
-        window.dispatchEvent(new CustomEvent('rk-products-updated', {detail: products}));
-
-        if (page < pageCount) {
-          await sleep(delayMs);
-        }
-
-        page += 1;
-      } while (page <= pageCount);
-
-      if (!stopRequested) {
-  showSuccess(
-    `获取完成：API 返回 ${rawCount} 条，去重后 ${products.length} 件。\n` +
-    `已包含商品管理番号、商品 URL、主图和 API 商品说明。`
-  );
-
-  /* Code workbench handles results; do not automatically start old checkers.
-  window.postMessage(
-    {
-      type: 'RK_CHECK_PRODUCTS',
-      sourceName: '楽天商品API',
-      items: products
-    },
-    window.location.origin
-  ); */
+'use strict';
+const ENDPOINT='https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701';
+function parseShop(value){
+ const raw=value.trim();
+ if(/^[a-z0-9_-]+$/i.test(raw))return raw;
+ try{const u=new URL(raw),parts=u.pathname.split('/').filter(Boolean);if(['item.rakuten.co.jp','www.rakuten.co.jp'].includes(u.hostname)&&/^https?:$/.test(u.protocol)&&/^[a-z0-9_-]+$/i.test(parts[0]||''))return parts[0];}catch{}
+ throw Error('请输入店铺代码（如 lovestyle）或有效的乐天店铺／商品 URL。');
 }
-    } catch (error) {
-      console.error(error);
-      showError(
-        '获取失败：\n' +
-        (error instanceof Error ? error.message : String(error))
-      );
-    } finally {
-      setRunning(false);
-      updateButtons();
-    }
-  }
-
-  async function fetchWithRetry(url, maxRetries) {
-    for (let attempt = 0; attempt <= maxRetries; attempt++) {
-      const response = await fetch(url);
-
-      if (response.status !== 429) {
-        return response;
-      }
-
-      if (attempt === maxRetries) {
-        return response;
-      }
-
-      const retryAfter = Number(response.headers.get('Retry-After'));
-      const waitMs = Number.isFinite(retryAfter) && retryAfter > 0
-        ? retryAfter * 1000
-        : Math.min(5000 * Math.pow(2, attempt), 60000);
-
-      showStatus(
-        `遇到 HTTP 429，等待 ${Math.round(waitMs / 1000)} 秒后重试……\n` +
-        `重试 ${attempt + 1}/${maxRetries}`
-      );
-
-      await sleep(waitMs);
-
-      if (stopRequested) {
-        return response;
-      }
-    }
-  }
-
-  function removeShopPrefix(itemCode) {
-    const index = itemCode.indexOf(':');
-    return index >= 0 ? itemCode.slice(index + 1) : itemCode;
-  }
-
-  function getFirstImage(value) {
-    if (!Array.isArray(value) || value.length === 0) return '';
-    const first = value[0];
-    if (typeof first === 'string') return first;
-    return first?.imageUrl || first?.imageURL || first?.url || '';
-  }
-
-  function stripDownsize(value) {
-    if (!value) return '';
-    try {
-      const url = new URL(value);
-      url.searchParams.delete('downsize');
-      return url.href;
-    } catch {
-      return String(value)
-        .replace(/([?&])downsize=[^&]*(?:&|$)/i, '$1')
-        .replace(/[?&]$/, '');
-    }
-  }
-
-  function cleanText(value) {
-    return String(value ?? '')
-      .replace(/<br\s*\/?>/gi, '\n')
-      .replace(/<[^>]+>/g, ' ')
-      .replace(/&nbsp;/gi, ' ')
-      .replace(/&amp;/gi, '&')
-      .replace(/&lt;/gi, '<')
-      .replace(/&gt;/gi, '>')
-      .replace(/&quot;/gi, '"')
-      .replace(/&#39;/gi, "'")
-      .replace(/[ \t]+/g, ' ')
-      .replace(/\n{3,}/g, '\n\n')
-      .trim();
-  }
-
-  function dedupeProducts(list) {
-    const map = new Map();
-
-    for (const item of list) {
-      const key =
-        item.商品管理番号 ||
-        item.商品URL ||
-        `${item.商品名}|${item.商品主图}`;
-
-      if (!map.has(key)) {
-        map.set(key, item);
-      }
-    }
-
-    return [...map.values()];
-  }
-
-  function render() {
-    if (products.length === 0) {
-      resultBody.innerHTML =
-        '<tr><td colspan="7">尚未获取或没有符合条件的商品。</td></tr>';
-      updateSummary();
-      updateButtons();
-      return;
-    }
-
-    resultBody.replaceChildren();
-
-    products.forEach((product, index) => {
-      const tr = document.createElement('tr');
-
-      tr.appendChild(textCell(String(index + 1)));
-
-      const imageTd = document.createElement('td');
-      if (product.商品主图) {
-        const a = document.createElement('a');
-        a.href = product.商品主图;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-
-        const img = document.createElement('img');
-        img.src = product.商品主图;
-        img.alt = product.商品名;
-        img.loading = 'lazy';
-        img.className = 'img';
-
-        a.appendChild(img);
-        imageTd.appendChild(a);
-      } else {
-        imageTd.innerHTML = '<span class="warn">无主图</span>';
-      }
-      tr.appendChild(imageTd);
-
-      tr.appendChild(textCell(product.商品名, 'name'));
-
-      const itemNumberTd = textCell(
-        product.商品番号 || 'API 不提供',
-        product.商品番号 ? 'code' : 'warn'
-      );
-      tr.appendChild(itemNumberTd);
-
-      tr.appendChild(textCell(product.商品管理番号, 'code'));
-
-      const urlTd = document.createElement('td');
-      if (product.商品URL) {
-        const a = document.createElement('a');
-        a.href = product.商品URL;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.textContent = '打开商品页';
-        urlTd.appendChild(a);
-      }
-      tr.appendChild(urlTd);
-
-      tr.appendChild(textCell(product.API商品说明, 'caption'));
-
-      resultBody.appendChild(tr);
-    });
-
-    updateSummary();
-    updateButtons();
-  }
-
-  function textCell(text, className = '') {
-    const td = document.createElement('td');
-    td.textContent = text || '';
-    if (className) td.className = className;
-    return td;
-  }
-
-  function updateSummary() {
-    const imageCount = products.filter(x => x.商品主图).length;
-    const keys = products.map(x => x.商品管理番号).filter(Boolean);
-    const duplicateCount = keys.length - new Set(keys).size;
-
-    $('resultCount').textContent = String(products.length);
-    $('imageCount').textContent = String(imageCount);
-    $('missingImageCount').textContent =
-      String(products.length - imageCount);
-    $('duplicateCount').textContent = String(duplicateCount);
-  }
-
-  function downloadCsv() {
-    if (products.length === 0) return;
-
-    const headers = [
-      '商品名',
-      '商品番号',
-      '商品管理番号',
-      '商品URL',
-      '商品主图',
-      'API商品说明'
-    ];
-
-    const rows = [
-      headers,
-      ...products.map(item => headers.map(header => item[header] ?? ''))
-    ];
-
-    const csv = '\uFEFF' +
-      rows.map(row => row.map(escapeCsv).join(',')).join('\r\n');
-
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-
-    const shop = sanitizeFileName($('shopCode').value.trim() || 'shop');
-    const keyword =
-      sanitizeFileName($('keyword').value.trim() || 'products');
-
-    a.href = url;
-    a.download = `${shop}_${keyword}_详情检查用.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-
-  async function copyJson() {
-    if (products.length === 0) return;
-    await copyText(JSON.stringify(products, null, 2));
-    showSuccess(`已复制 ${products.length} 件商品的 JSON。`);
-  }
-
-  async function copyUrls() {
-    if (products.length === 0) return;
-    const urls = products.map(x => x.商品URL).filter(Boolean).join('\n');
-    await copyText(urls);
-    showSuccess(`已复制 ${urls ? urls.split('\n').length : 0} 个商品 URL。`);
-  }
-
-  async function copyText(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.left = '-9999px';
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      textarea.remove();
-    }
-  }
-
-  function escapeCsv(value) {
-    return `"${String(value ?? '').replaceAll('"', '""')}"`;
-  }
-
-  function sanitizeFileName(value) {
-    return String(value).replace(/[\\/:*?"<>|]/g, '_');
-  }
-
-  function clearResults() {
-    products = [];
-    stopRequested = true;
-    render();
-    showStatus('结果已清空。');
-  }
-
-  function setRunning(running) {
-    startButton.disabled = running;
-    stopButton.disabled = !running;
-    clearButton.disabled = running;
-  }
-
-  function updateButtons() {
-    const disabled = products.length === 0;
-    csvButton.disabled = disabled;
-    jsonButton.disabled = disabled;
-    urlButton.disabled = disabled;
-  }
-
-  function showStatus(message) {
-    status.className = '';
-    status.textContent = message;
-  }
-
-  function showSuccess(message) {
-    status.className = 'success';
-    status.textContent = message;
-  }
-
-  function showError(message) {
-    status.className = 'error';
-    status.textContent = message;
-  }
-
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  render();
+function safeUrl(value,product=false){try{const u=new URL(String(value));if(u.protocol!=='https:'||(product&&u.hostname!=='item.rakuten.co.jp'))return '';if(product){u.search='';u.hash='';}return u.href;}catch{return '';}}
+function plainText(value){
+ const html=String(value??'').replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<br\s*\/?>/gi,'\n').replace(/<\/(p|div|tr|li|h[1-6])>/gi,'\n').replace(/<\/(td|th)>/gi,'\t').replace(/<[^>]*>/g,'');
+ const doc=new DOMParser().parseFromString('<!doctype html><body>'+html.replace(/</g,'&lt;'),'text/html');
+ return (doc.body.textContent||'').replace(/\u00a0/g,' ').replace(/[ \t]+/g,' ').replace(/\n[ \t]+/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+}
+function normalizeItem(raw,carrier){
+ const item=raw.Item||raw.item||raw,url=safeUrl(item.itemUrl,true);
+ const id=url?new URL(url).pathname.split('/').filter(Boolean)[1]||'':'';
+ const images=(Array.isArray(item.mediumImageUrls)?item.mediumImageUrls:[]).map(v=>safeUrl(typeof v==='string'?v:v?.imageUrl||v?.url)).filter(Boolean);
+ return {id,url,apiCode:String(item.itemCode||''),name:plainText(item.itemName),catchcopy:plainText(item.catchcopy),caption:plainText(item.itemCaption),images,price:item.itemPrice??'',available:item.availability===undefined?'':String(item.availability),shop:plainText(item.shopName),carrier:carrier==='2'?'手机版':'PC'};
+}
+function toInfo(p){return ['商品管理番号 / URL ID：'+p.id,'商品URL：'+p.url,'API itemCode：'+p.apiCode,'商品名：'+p.name,'キャッチコピー：'+p.catchcopy,'价格（日元）：'+p.price,'状态：'+availabilityText(p.available),'说明版本：'+p.carrier,'API图片：\n'+p.images.join('\n'),'API商品说明：\n'+p.caption].join('\n');}
+function availabilityText(v){return v==='1'?'可购买':v==='0'?'缺货':'未返回';}
+function excelCell(value){let v=String(value??'');if(/^[\s]*[=+@-]/.test(v)||/^0\d+$/.test(v))v="'"+v;return '"'+v.replaceAll('"','""')+'"';}
+function toCsv(items){const rows=[['商品URL','商品管理番号_URL_ID','API_itemCode','商品名','キャッチコピー','API商品说明','价格_JPY','状态','说明版本','API图片URL'],...items.map(p=>[p.url,p.id,p.apiCode,p.name,p.catchcopy,p.caption,p.price,availabilityText(p.available),p.carrier,p.images.join('\n')])];return '\uFEFF'+rows.map(r=>r.map(excelCell).join(',')).join('\r\n');}
+function abortError(){return new DOMException('已停止','AbortError');}
+function delay(ms,signal){return new Promise((resolve,reject)=>{if(signal.aborted)return reject(abortError());const cancel=()=>{clearTimeout(timer);reject(abortError());};const timer=setTimeout(()=>{signal.removeEventListener('abort',cancel);resolve();},ms);signal.addEventListener('abort',cancel,{once:true});});}
+async function fetchPage(params,signal,notify){
+ for(let retry=0;retry<=3;retry++){
+  if(signal.aborted)throw abortError();
+  const request=new AbortController(),cancel=()=>request.abort();signal.addEventListener('abort',cancel,{once:true});const timer=setTimeout(()=>request.abort(),25000);
+  let response,body;
+  try{response=await fetch(ENDPOINT+'?'+params.toString(),{signal:request.signal,credentials:'omit',referrerPolicy:'no-referrer'});body=await response.text();}
+  catch(e){if(signal.aborted)throw abortError();throw Error(e.name==='AbortError'?'API 请求超时，请稍后重试。':'无法连接 API，请检查网络和应用允许的来源域名设置。');}
+  finally{clearTimeout(timer);signal.removeEventListener('abort',cancel);}
+  if([429,503].includes(response.status)&&retry<3){const seconds=Number(response.headers.get('Retry-After'));const ms=seconds>0?Math.min(seconds*1000,120000):5000*2**retry;notify(`API 繁忙，${Math.ceil(ms/1000)} 秒后重试（${retry+1}/3）。`);await delay(ms,signal);continue;}
+  let data;try{data=JSON.parse(body);}catch{throw Error(`API 返回非 JSON 内容（HTTP ${response.status}）。`);}
+  if(response.status===404&&data.error==='not_found')return {items:[],count:0,pageCount:0};
+  if(!response.ok||data.error){let reason=String(data.error_description||data.error||`HTTP ${response.status}`);for(const name of ['applicationId','accessKey']){const secret=params.get(name);if(secret)reason=reason.split(secret).join('[已隐藏]');}throw Error(reason);}
+  const list=data.items??data.Items;if(!Array.isArray(list))throw Error('API 返回格式异常：未找到商品数组。');return {...data,items:list};
+ }
+}
+async function retrieve(query,signal,onPage,notify,request=fetchPage,pause=delay){
+ const collected=new Map();let total=0,pageCount=1,pages=0;
+ for(let page=1;page<=pageCount;page++){
+  const params=new URLSearchParams({applicationId:query.applicationId,accessKey:query.accessKey,shopCode:query.shop,hits:'30',page:String(page),format:'json',formatVersion:'2',availability:query.availability,carrier:query.carrier,imageFlag:'0'});
+  if(query.keyword)params.set('keyword',query.keyword);if(query.excluded)params.set('NGKeyword',query.excluded);
+  notify(`正在获取第 ${page} 页，已整理 ${collected.size} 件商品…`);
+  const data=await request(params,signal,notify);if(signal.aborted)throw abortError();pages=page;
+  total=Number(data.count??0);pageCount=Math.min(Math.max(1,Number(data.pageCount)||Math.ceil(total/30)||1),query.maxPages,100);
+  for(const raw of data.items){const p=normalizeItem(raw,query.carrier),key=p.apiCode||p.url;if(key&&!collected.has(key))collected.set(key,p);}
+  onPage([...collected.values()],{total,page,pageCount});if(!data.items.length)break;
+  if(page<pageCount)await pause(2500,signal);
+ }
+ return {total,pages,count:collected.size,incomplete:total>collected.size};
+}
+(() => {
+ const $=id=>document.getElementById(id);let products=[],selected=new Set(),current='',controller=null;
+ function message(text,error=false){$('status').textContent=text;$('status').className=error?'error':'';}
+ function key(p){return p.apiCode||p.url;}
+ function visible(){const term=$('filter').value.trim().toLowerCase();return products.filter(p=>`${p.id} ${p.name} ${p.apiCode} ${p.caption}`.toLowerCase().includes(term));}
+ function chosen(){return visible().filter(p=>selected.has(key(p)));}
+ function updateSelection(){const list=visible(),count=chosen().length;$('counter').textContent=`${products.length} 件商品 · 显示 ${list.length} 件 · 选中 ${count} 件`;for(const id of ['copyUrls','copyInfo','exportCsv'])$(id).disabled=count===0;$('selectAll').disabled=!list.length;$('selectAll').checked=!!list.length&&count===list.length;$('selectAll').indeterminate=count>0&&count<list.length;}
+ function cell(tr,text,className=''){const td=document.createElement('td');td.textContent=text;td.className=className;tr.append(td);return td;}
+ function link(href,text){const a=document.createElement('a');a.href=href;a.textContent=text;a.target='_blank';a.rel='noopener noreferrer';return a;}
+ function showDetail(p){current=key(p);$('detail').hidden=false;$('facts').replaceChildren();$('images').replaceChildren();const values=[['商品管理番号 / URL ID',p.id],['API itemCode',p.apiCode],['商品名',p.name],['キャッチコピー',p.catchcopy],['价格',p.price===''?'未返回':`${p.price} 日元`],['状态',availabilityText(p.available)],['说明版本',p.carrier],['商品 URL',p.url]];for(const [label,value]of values){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;if(label==='商品 URL'&&value)dd.append(link(value,value));else dd.textContent=value||'未返回';$('facts').append(dt,dd);}for(const url of p.images){const a=link(url,'');const img=document.createElement('img');img.src=url;img.alt=p.name;img.loading='lazy';a.append(img);$('images').append(a);}if(!p.images.length)$('images').textContent='API 未返回图片';$('caption').textContent=p.caption||'API 未返回商品说明';for(const row of $('results').children)row.classList.toggle('active',row.dataset.key===current);}
+ function render(){const body=$('results');body.replaceChildren();const list=visible();if(!list.length){const tr=document.createElement('tr');const td=cell(tr,products.length?'没有符合筛选条件的商品。':'尚无商品结果。','empty');td.colSpan=6;body.append(tr);}for(const p of list){const tr=document.createElement('tr');tr.dataset.key=key(p);tr.classList.toggle('active',key(p)===current);const check=document.createElement('input');check.type='checkbox';check.checked=selected.has(key(p));check.setAttribute('aria-label',`选择 ${p.id||p.name}`);check.onchange=()=>{check.checked?selected.add(key(p)):selected.delete(key(p));updateSelection();};cell(tr,'').append(check);const imageCell=cell(tr,'');if(p.images[0]){const img=document.createElement('img');img.src=p.images[0];img.alt='';img.loading='lazy';img.className='thumb';imageCell.append(img);}else imageCell.textContent='无图';cell(tr,p.id||'未返回','id');const nameCell=cell(tr,'','name'),button=document.createElement('button');button.className='title-button';button.textContent=p.name||'无商品名';button.onclick=()=>{showDetail(p);$('detail').scrollIntoView({behavior:'smooth',block:'start'});};nameCell.append(button);if(p.url){nameCell.append(document.createElement('br'),link(p.url,'商品页面'));}cell(tr,p.price===''?'—':`¥${p.price}`);const action=document.createElement('button');action.textContent='复制资料';action.onclick=()=>copy(toInfo(p),'已复制这件商品的补录资料。');cell(tr,'').append(action);body.append(tr);}updateSelection();}
+ async function copy(text,success){try{if(!navigator.clipboard)throw Error('当前浏览器不支持复制，请使用 HTTPS 页面。');await navigator.clipboard.writeText(text);message(success);}catch(e){message(`复制失败：${e.message}。可尝试导出 CSV。`,true);}}
+ function running(value){$('search').disabled=value;$('stop').disabled=!value;for(const id of ['shop','keyword','excluded','maxPages','availability','carrier','applicationId','accessKey'])$(id).disabled=value;}
+ $('searchForm').onsubmit=async event=>{event.preventDefault();if(controller)return;let query;try{query={applicationId:$('applicationId').value.trim(),accessKey:$('accessKey').value.trim(),shop:parseShop($('shop').value),keyword:$('keyword').value.trim(),excluded:$('excluded').value.trim(),maxPages:Number($('maxPages').value),availability:$('availability').value,carrier:$('carrier').value};if(!query.applicationId||!query.accessKey)throw Error('请填写 Application ID 和 Access Key。');}catch(e){message(e.message,true);return;}
+  controller=new AbortController();products=[];selected=new Set();current='';$('filter').value='';$('detail').hidden=true;$('credentials').open=false;render();running(true);
+  try{const result=await retrieve(query,controller.signal,items=>{const old=new Set(products.map(key));products=items;for(const p of products)if(!old.has(key(p)))selected.add(key(p));render();},message);message(result.incomplete?`已获取 ${result.count} 件；API 显示共有 ${result.total} 件，结果尚不完整。请缩小关键词范围，或调整最多获取页数。`:`获取完成，共 ${result.count} 件。选中商品后可复制补录资料。`);if(products[0])showDetail(products[0]);}
+  catch(e){message(e.name==='AbortError'?`已停止，保留已获取的 ${products.length} 件商品。`:`获取失败：${e.message}\n已保留 ${products.length} 件商品，可复制或导出。`,e.name!=='AbortError');}
+  finally{controller=null;running(false);}
+ };
+ $('stop').onclick=()=>controller?.abort();$('filter').oninput=render;
+ $('selectAll').onchange=()=>{for(const p of visible())$('selectAll').checked?selected.add(key(p)):selected.delete(key(p));render();};
+ $('copyUrls').onclick=()=>{const urls=chosen().map(p=>p.url).filter(Boolean);if(!urls.length)return message('所选商品没有可复制的 URL。',true);copy(urls.join('\n'),`已复制 ${urls.length} 个商品 URL。`);};
+ $('copyInfo').onclick=()=>copy(chosen().map(toInfo).join('\n\n────────────────────\n\n'),`已复制 ${chosen().length} 件商品的补录资料，可直接粘贴。`);
+ $('copyOne').onclick=()=>{const p=products.find(p=>key(p)===current);if(p)copy(toInfo(p),'已复制这件商品的补录资料。');};
+ $('exportCsv').onclick=()=>{const url=URL.createObjectURL(new Blob([toCsv(chosen())],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='rakuten_code_info.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);message(`已导出 ${chosen().length} 件商品的补录资料。`);};
 })();
-</script>
-<script type="module" src="./code-workbench.js"></script>
-</body>
-</html>
+</script></main></body></html>
