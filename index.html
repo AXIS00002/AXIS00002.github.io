@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>rakuten tool</title>
+  <title>楽天 code 工作台</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -144,7 +144,7 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>楽天商品API</h1>
+  <h1>楽天 code 工作台</h1>
   <p class="sub">
     商品名、商品管理番号、商品 URL、主图和 API 商品说明获取<br>
     API 不返回 RMS 的“商品番号”
@@ -165,7 +165,7 @@
       <div class="field">
         <label for="shopCode">店铺代码 shopCode</label>
         <input id="shopCode" type="text" autocomplete="off" placeholder="">
-        <div class="hint">填写商品 URL</div>
+        <div class="hint">填写店铺代码，例如 lovestyle；也可粘贴该店商品 URL</div>
       </div>
 
       <div class="field">
@@ -281,7 +281,8 @@
   async function fetchAllProducts() {
     const applicationId = $('applicationId').value.trim();
     const accessKey = $('accessKey').value.trim();
-    const shopCode = $('shopCode').value.trim();
+    const shopInput = $('shopCode').value.trim();
+    const shopCode = shopInput.startsWith('https://item.rakuten.co.jp/') ? new URL(shopInput).pathname.split('/')[1] : shopInput;
     const keyword = $('keyword').value.trim();
     const ngKeyword = $('ngKeyword').value.trim();
     const maxPages = Number($('maxPages').value);
@@ -405,6 +406,7 @@
         );
 
         render();
+        window.dispatchEvent(new CustomEvent('rk-products-updated', {detail: products}));
 
         if (page < pageCount) {
           await sleep(delayMs);
@@ -419,6 +421,7 @@
     `已包含商品管理番号、商品 URL、主图和 API 商品说明。`
   );
 
+  /* Code workbench handles results; do not automatically start old checkers.
   window.postMessage(
     {
       type: 'RK_CHECK_PRODUCTS',
@@ -426,7 +429,7 @@
       items: products
     },
     window.location.origin
-  );
+  ); */
 }
     } catch (error) {
       console.error(error);
@@ -727,5 +730,6 @@
   render();
 })();
 </script>
+<script type="module" src="./code-workbench.js"></script>
 </body>
 </html>
