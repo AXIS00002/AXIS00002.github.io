@@ -6,11 +6,11 @@
 <meta name="referrer" content="no-referrer">
 <title>乐天 · code 补录资料</title>
 <style>
-:root{font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;color:#24312e;background:#f5f7f6;font-size:14px}*{box-sizing:border-box}body{margin:0}main{max-width:1440px;padding:32px 24px;margin:auto}h1{font-size:26px;letter-spacing:-.5px;margin:0 0 8px}h2{font-size:17px;margin:0 0 14px}p{line-height:1.7}.muted{color:#697871}header{margin-bottom:24px}.panel{background:#fff;border:1px solid #dce4df;border-radius:12px;padding:20px;margin-bottom:18px}.row{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:7px;flex:1;min-width:160px}label{font-weight:600}input,select,button{font:inherit;border-radius:7px;padding:10px 12px}input,select{border:1px solid #c7d3cc;background:#fff;min-width:0;color:inherit}input:focus,select:focus,button:focus-visible,summary:focus-visible{outline:2px solid #15734d;outline-offset:2px}button{border:1px solid #ccd8d0;background:#fff;color:#24312e;cursor:pointer;white-space:nowrap}button.primary{background:#176849;border-color:#176849;color:#fff}button:disabled{opacity:.45;cursor:default}details>summary{cursor:pointer;color:#52685b}details .row{margin-top:16px}.credentials{margin-bottom:18px}.advanced{margin-top:16px}#status{margin:16px 0 0;color:#53665b;white-space:pre-wrap}#status.error{color:#b42318}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.toolbar input{margin-left:auto;min-width:200px}.counter{font-weight:600;margin-right:8px}.table-wrap{overflow:auto;max-height:62vh;border:1px solid #e0e6e2;border-radius:8px}table{width:100%;min-width:840px;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #e7ece9;padding:12px;vertical-align:top}th{position:sticky;top:0;background:#f3f7f4;font-weight:600;z-index:1}tr.active td{background:#edf7f0}th:first-child,td:first-child{width:40px}input[type=checkbox]{accent-color:#176849;width:17px;height:17px;cursor:pointer}.name{max-width:480px;line-height:1.65}.thumb{width:64px;height:64px;object-fit:contain;border:1px solid #eef0ee;border-radius:6px}.id{font-family:ui-monospace,Consolas,monospace;white-space:nowrap}a{color:#146a49;overflow-wrap:anywhere}.title-button{border:0;background:none;padding:0;white-space:normal;text-align:left;line-height:1.65;color:#146a49}.empty{text-align:center;padding:52px;color:#6d7f74}.detail-head{display:flex;align-items:center;justify-content:space-between;gap:12px}#detail[hidden]{display:none}.detail-grid{display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px}.images{display:flex;gap:8px;flex-wrap:wrap;align-content:start}.images img{width:100px;height:100px;object-fit:contain;border:1px solid #e4eae6;border-radius:7px}dl{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;margin:0}dt{color:#6a7a70}dd{margin:0;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;line-height:1.8;background:#f7f9f7;padding:16px;border-radius:8px;max-height:440px;overflow:auto}footer{font-size:12px;color:#748279;line-height:1.8;padding:0 2px}footer a{color:inherit}@media(max-width:700px){main{padding:20px 12px}.panel{padding:15px}.field{min-width:100%;flex:1}.detail-grid{grid-template-columns:1fr}.toolbar input{width:100%;margin-left:0}dl{grid-template-columns:105px minmax(0,1fr)}h1{font-size:23px}}
+:root{font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;color:#24312e;background:#f5f7f6;font-size:14px}*{box-sizing:border-box}body{margin:0}main{max-width:1440px;padding:32px 24px;margin:auto}h1{font-size:26px;letter-spacing:-.5px;margin:0 0 8px}h2{font-size:17px;margin:0 0 14px}p{line-height:1.7}.muted{color:#697871}header{margin-bottom:24px}.panel{background:#fff;border:1px solid #dce4df;border-radius:12px;padding:20px;margin-bottom:18px}.row{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:7px;flex:1;min-width:160px}label{font-weight:600}input,select,button{font:inherit;border-radius:7px;padding:10px 12px}input,select{border:1px solid #c7d3cc;background:#fff;min-width:0;color:inherit}input:focus,select:focus,button:focus-visible,summary:focus-visible{outline:2px solid #15734d;outline-offset:2px}button{border:1px solid #ccd8d0;background:#fff;color:#24312e;cursor:pointer;white-space:nowrap}button.primary{background:#176849;border-color:#176849;color:#fff}button:disabled{opacity:.45;cursor:default}details>summary{cursor:pointer;color:#52685b}details .row{margin-top:16px}.credentials{margin-bottom:18px}.advanced{margin-top:16px}#status{margin:16px 0 0;color:#53665b;white-space:pre-wrap}#status.error{color:#b42318}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.toolbar input{margin-left:auto;min-width:200px}.counter{font-weight:600;margin-right:8px}.table-wrap{overflow:auto;max-height:62vh;border:1px solid #e0e6e2;border-radius:8px}table{width:100%;min-width:840px;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #e7ece9;padding:12px;vertical-align:top}th{position:sticky;top:0;background:#f3f7f4;font-weight:600;z-index:1}tr.active td{background:#edf7f0}th:first-child,td:first-child{width:40px}input[type=checkbox]{accent-color:#176849;width:17px;height:17px;cursor:pointer}.name{max-width:480px;line-height:1.65}.id{font-family:ui-monospace,Consolas,monospace;white-space:nowrap}a{color:#146a49;overflow-wrap:anywhere}.title-button{border:0;background:none;padding:0;white-space:normal;text-align:left;line-height:1.65;color:#146a49}.empty{text-align:center;padding:52px;color:#6d7f74}.detail-head{display:flex;align-items:center;justify-content:space-between;gap:12px}#detail[hidden]{display:none}dl{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;margin:0}dt{color:#6a7a70}dd{margin:0;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;line-height:1.8;background:#f7f9f7;padding:16px;border-radius:8px;max-height:440px;overflow:auto}footer{font-size:12px;color:#748279;line-height:1.8;padding:0 2px}footer a{color:inherit}@media(max-width:700px){main{padding:20px 12px}.panel{padding:15px}.field{min-width:100%;flex:1}.toolbar input{width:100%;margin-left:0}dl{grid-template-columns:105px minmax(0,1fr)}h1{font-size:23px}}
 </style>
 </head>
 <body><main>
-<header><h1>乐天 · code 补录资料</h1><div class="muted">输入店铺，一键获取公开 API 可检索的全店商品资料。</div></header>
+<header><h1>乐天 · code 补录资料</h1><div class="muted">输入店铺，一键获取补录需要的商品编号、名称和说明。</div></header>
 <section class="panel" aria-label="商品查询">
 <details class="credentials" id="credentials" open><summary>API 设置</summary><div class="row">
  <div class="field"><label for="applicationId">Application ID</label><input id="applicationId" autocomplete="off" placeholder="输入 Application ID"></div>
@@ -31,12 +31,13 @@
 </section>
 <section class="panel" aria-label="商品结果">
 <div class="toolbar"><span class="counter" id="counter">0 件商品</span><button id="copyUrls" disabled>复制 URL</button><button id="copyInfo" class="primary" disabled>复制补录资料</button><button id="exportCsv" disabled>导出 CSV</button><input id="filter" aria-label="筛选已获取结果" placeholder="筛选已获取结果"></div>
-<div class="table-wrap"><table><thead><tr><th><input id="selectAll" type="checkbox" aria-label="选择全部筛选结果" disabled></th><th>图片</th><th>商品管理番号 / URL ID</th><th>商品名</th><th>价格</th><th>资料</th></tr></thead><tbody id="results"><tr><td colspan="6" class="empty">获取后，商品会显示在这里。</td></tr></tbody></table></div><div class="toolbar" style="margin:14px 0 0"><button id="prevResults" disabled>上一页</button><span id="resultPage">第 1 / 1 页</span><button id="nextResults" disabled>下一页</button><span class="muted">每页显示 100 件；复制和导出包含全部勾选的筛选结果。</span></div>
+<div class="table-wrap"><table><thead><tr><th><input id="selectAll" type="checkbox" aria-label="选择全部筛选结果" disabled></th><th>商品管理番号 / URL ID</th><th>商品名</th><th>资料</th></tr></thead><tbody id="results"><tr><td colspan="4" class="empty">获取后，商品会显示在这里。</td></tr></tbody></table></div><div class="toolbar" style="margin:14px 0 0"><button id="prevResults" disabled>上一页</button><span id="resultPage">第 1 / 1 页</span><button id="nextResults" disabled>下一页</button><span class="muted">每页显示 100 件；复制和导出包含全部勾选的筛选结果。</span></div>
 </section>
-<section id="detail" class="panel" hidden aria-label="商品详情"><div class="detail-head"><h2>商品详情</h2><button id="copyOne">复制这件商品资料</button></div><div class="detail-grid"><div id="images" class="images"></div><div><dl id="facts"></dl><h3>API 商品说明</h3><pre id="caption"></pre></div></div></section>
+<section id="detail" class="panel" hidden aria-label="商品详情"><div class="detail-head"><h2>商品详情</h2><button id="copyOne">复制这件商品资料</button></div><div><dl id="facts"></dl><h3>API 商品说明</h3><pre id="caption"></pre></div></section>
 <footer>仅获取 API 返回的信息，不生成或推测内部 code、各颜色数量和自由选择项。商品说明中包含的型号、数量与顔料／染料文字会原样保留。<br>API 设置仅用于本次页面请求，不保存在本机。<a href="https://webservice.rakuten.co.jp/documentation/ichiba-item-search" target="_blank" rel="noopener noreferrer">乐天 API 文档</a></footer>
 <script>
 'use strict';
+const ITEM_FIELDS='count,pageCount,itemCode,itemUrl,itemName,catchcopy,itemCaption';
 const ENDPOINT='https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701';
 function parseShop(value){
  const raw=value.trim();
@@ -47,19 +48,17 @@ function parseShop(value){
 function safeUrl(value,product=false){try{const u=new URL(String(value));if(u.protocol!=='https:'||(product&&u.hostname!=='item.rakuten.co.jp'))return '';if(product){u.search='';u.hash='';}return u.href;}catch{return '';}}
 function plainText(value){
  const html=String(value??'').replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<br\s*\/?>/gi,'\n').replace(/<\/(p|div|tr|li|h[1-6])>/gi,'\n').replace(/<\/(td|th)>/gi,'\t').replace(/<[^>]*>/g,'');
- const doc=new DOMParser().parseFromString('<!doctype html><body>'+html.replace(/</g,'&lt;'),'text/html');
- return (doc.body.textContent||'').replace(/\u00a0/g,' ').replace(/[ \t]+/g,' ').replace(/\n[ \t]+/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+ const text=html.includes('&')?new DOMParser().parseFromString('<!doctype html><body>'+html.replace(/</g,'&lt;'),'text/html').body.textContent:html;
+ return (text||'').replace(/\u00a0/g,' ').replace(/[ \t]+/g,' ').replace(/\n[ \t]+/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
 }
 function normalizeItem(raw,carrier){
  const item=raw.Item||raw.item||raw,url=safeUrl(item.itemUrl,true);
  const id=url?new URL(url).pathname.split('/').filter(Boolean)[1]||'':'';
- const images=(Array.isArray(item.mediumImageUrls)?item.mediumImageUrls:[]).map(v=>safeUrl(typeof v==='string'?v:v?.imageUrl||v?.url)).filter(Boolean);
- return {id,url,apiCode:String(item.itemCode||''),name:plainText(item.itemName),catchcopy:plainText(item.catchcopy),caption:plainText(item.itemCaption),images,price:item.itemPrice??'',available:item.availability===undefined?'':String(item.availability),shop:plainText(item.shopName),carrier:carrier==='2'?'手机版':'PC'};
+ return {id,url,apiCode:String(item.itemCode||''),name:plainText(item.itemName),catchcopy:plainText(item.catchcopy),caption:plainText(item.itemCaption),carrier:carrier==='2'?'手机版':'PC'};
 }
-function toInfo(p){return ['商品管理番号 / URL ID：'+p.id,'商品URL：'+p.url,'API itemCode：'+p.apiCode,'商品名：'+p.name,'キャッチコピー：'+p.catchcopy,'价格（日元）：'+p.price,'状态：'+availabilityText(p.available),'说明版本：'+p.carrier,'API图片：\n'+p.images.join('\n'),'API商品说明：\n'+p.caption].join('\n');}
-function availabilityText(v){return v==='1'?'可购买':v==='0'?'缺货':'未返回';}
+function toInfo(p){return ['商品管理番号 / URL ID：'+p.id,'商品URL：'+p.url,'API itemCode：'+p.apiCode,'商品名：'+p.name,'キャッチコピー：'+p.catchcopy,'说明版本：'+p.carrier,'API商品说明：\n'+p.caption].join('\n');}
 function excelCell(value){let v=String(value??'');if(/^[\s]*[=+@-]/.test(v)||/^0\d+$/.test(v))v="'"+v;return '"'+v.replaceAll('"','""')+'"';}
-function toCsv(items){const rows=[['商品URL','商品管理番号_URL_ID','API_itemCode','商品名','キャッチコピー','API商品说明','价格_JPY','状态','说明版本','API图片URL'],...items.map(p=>[p.url,p.id,p.apiCode,p.name,p.catchcopy,p.caption,p.price,availabilityText(p.available),p.carrier,p.images.join('\n')])];return '\uFEFF'+rows.map(r=>r.map(excelCell).join(',')).join('\r\n');}
+function toCsv(items){const rows=[['商品URL','商品管理番号_URL_ID','API_itemCode','商品名','キャッチコピー','API商品说明','说明版本'],...items.map(p=>[p.url,p.id,p.apiCode,p.name,p.catchcopy,p.caption,p.carrier])];return '\uFEFF'+rows.map(r=>r.map(excelCell).join(',')).join('\r\n');}
 function abortError(){return new DOMException('已停止','AbortError');}
 function delay(ms,signal){return new Promise((resolve,reject)=>{if(signal.aborted)return reject(abortError());const cancel=()=>{clearTimeout(timer);reject(abortError());};const timer=setTimeout(()=>{signal.removeEventListener('abort',cancel);resolve();},ms);signal.addEventListener('abort',cancel,{once:true});});}
 async function fetchPage(params,signal,notify){
@@ -80,16 +79,21 @@ async function fetchPage(params,signal,notify){
 async function retrieve(query,signal,onPage,notify,request=fetchPage,pause=delay){
  const collected=new Map();let total=0,pageCount=1,pages=0;
  for(let page=1;page<=pageCount;page++){
-  const params=new URLSearchParams({applicationId:query.applicationId,accessKey:query.accessKey,shopCode:query.shop,hits:'30',page:String(page),format:'json',formatVersion:'2',availability:query.availability,carrier:query.carrier,imageFlag:'0'});
+  const params=new URLSearchParams({applicationId:query.applicationId,accessKey:query.accessKey,shopCode:query.shop,hits:'30',page:String(page),format:'json',formatVersion:'2',availability:query.availability,carrier:query.carrier,imageFlag:'0',elements:ITEM_FIELDS});
   if(query.keyword)params.set('keyword',query.keyword);if(query.excluded)params.set('NGKeyword',query.excluded);
   notify(`正在获取第 ${page} 页，已整理 ${collected.size} 件商品…`);
   const data=await request(params,signal,notify);if(signal.aborted)throw abortError();pages=page;
   total=Number(data.count??0);pageCount=Math.min(Math.max(1,Number(data.pageCount)||Math.ceil(total/30)||1),query.maxPages,100);
-  for(const raw of data.items){const p=normalizeItem(raw,query.carrier),key=p.apiCode||p.url;if(key&&!collected.has(key))collected.set(key,p);}
-  onPage([...collected.values()],{total,page,pageCount});if(!data.items.length)break;
+  const added=appendItems(collected,data.items,query.carrier);
+  if(added.length)onPage(added,{append:true,total,page,pageCount});if(!data.items.length)break;
   if(page<pageCount)await pause(2500,signal);
  }
  return {total,pages,count:collected.size,incomplete:total>collected.size};
+}
+function appendItems(collected,items,carrier){
+ const added=[];
+ for(const raw of items){const item=raw.Item||raw.item||raw;const key=String(item.itemCode||'')||safeUrl(item.itemUrl,true);if(!key||collected.has(key))continue;const p=normalizeItem(raw,carrier);collected.set(key,p);added.push(p);}
+ return added;
 }
 function childGenres(data,current,ancestors=[]){
  let info=data.genreInformation??data.GenreInformation;
@@ -104,13 +108,13 @@ async function retrieveAll(query,signal,onPage,notify,request=fetchPage,pause=de
  // Every query stays below the documented 100-page limit. Inclusive price
  // boundaries intentionally overlap; itemCode deduplication removes repeats.
  const collected=new Map(),visited=new Set(),warnings=[];
- let total=0,requests=0,finished=0,queue=[{genre:'',low:0,high:999999999,ancestors:[]}];
- const base={applicationId:query.applicationId,accessKey:query.accessKey,shopCode:query.shop,hits:'30',format:'json',formatVersion:'2',availability:'0',carrier:query.carrier,imageFlag:'0',sort:'+itemPrice',genreInformationFlag:'1'};
+ let total=0,requests=0,finished=0,pendingItems=[],queue=[{genre:'',low:0,high:999999999,ancestors:[]}];
+ const base={applicationId:query.applicationId,accessKey:query.accessKey,shopCode:query.shop,hits:'30',format:'json',formatVersion:'2',availability:'0',carrier:query.carrier,imageFlag:'0',sort:'+itemPrice'};
  async function call(job,page=1,extra={}){
   if(signal.aborted)throw abortError();
   if(requests)await pause(2500,signal);
   if(signal.aborted)throw abortError();
-  const params=new URLSearchParams({...base,page:String(page),...extra});
+  const params=new URLSearchParams({...base,page:String(page),genreInformationFlag:page===1?'1':'0',elements:ITEM_FIELDS+(page===1?',itemPrice,genreInformation':''),...extra});
   if(job.genre)params.set('genreId',job.genre);
   if(job.low>0)params.set('minPrice',String(job.low));
   if(job.high<999999999)params.set('maxPrice',String(job.high));
@@ -119,8 +123,8 @@ async function retrieveAll(query,signal,onPage,notify,request=fetchPage,pause=de
   if(!Number.isSafeInteger(Number(data.count))||Number(data.count)<0)throw Error('API 未返回有效总数，无法确认全店分批范围。');
   return data;
  }
- function add(data){for(const raw of data.items){const p=normalizeItem(raw,query.carrier),key=p.apiCode||p.url;if(key&&!collected.has(key))collected.set(key,p);}}
- function publish(){onPage([...collected.values()],{total,requests,finished,pending:queue.length});}
+ function add(data){pendingItems.push(...appendItems(collected,data.items,query.carrier));}
+ function publish(){if(pendingItems.length){onPage(pendingItems,{append:true,total,requests,finished,pending:queue.length});pendingItems=[];}}
  while(queue.length){
   const job=queue.shift(),signature=[job.genre,job.low,job.high].join(':');
   if(visited.has(signature))continue;visited.add(signature);
@@ -132,7 +136,21 @@ async function retrieveAll(query,signal,onPage,notify,request=fetchPage,pause=de
   if(count>3000){
    const genres=childGenres(first,job.genre,job.ancestors);
    if(genres.length){queue.unshift(...genres.map(genre=>({...job,genre,ancestors:[...job.ancestors,job.genre]})));continue;}
-   if(job.high-job.low>1){const middle=Math.floor((job.low+job.high)/2);queue.unshift({...job,high:middle},{...job,low:middle});continue;}
+   if(job.high-job.low>1){
+    // Use the actual price span instead of probing mostly empty ranges up to 1 billion.
+    const last=await call(job,1,{hits:'1',sort:'-itemPrice',genreInformationFlag:'0',elements:'count,itemPrice'});
+    const unwrap=r=>r?.Item||r?.item||r||{};
+    const price=r=>{const v=unwrap(r).itemPrice;return v===undefined||v===null||v===''?NaN:Number(v);};
+    const low=price(first.items[0]),high=price(last.items[0]);
+    const known=Number.isFinite(low)&&Number.isFinite(high)&&low<=high;
+    if(Number(last.count)!==count)warnings.push(`${label}：拆分查询期间商品总数发生变化。`);
+    // Equal prices cannot be separated by price; report saturation rather than repeating queries.
+    if(!known||low!==high){
+     let middle=known?Math.floor((low+high)/2):Math.floor((job.low+job.high)/2);
+     middle=Math.max(job.low+1,Math.min(job.high-1,middle));
+     queue.unshift({...job,high:middle},{...job,low:middle});continue;
+    }
+   }
    warnings.push(`${label}：${count} 件，已无法继续拆分，最多读取 3000 件。`);
   }
   const pages=Math.min(100,Math.ceil(count/30));let localCount=first.items.length;
@@ -145,7 +163,7 @@ async function retrieveAll(query,signal,onPage,notify,request=fetchPage,pause=de
   finished++;publish();
  }
  notify(`已整理 ${collected.size} 件，正在复核全店总数…`);
- const final=await call({genre:'',low:0,high:999999999},1,{hits:'1',genreInformationFlag:'0'});
+ const final=await call({genre:'',low:0,high:999999999},1,{hits:'1',genreInformationFlag:'0',elements:'count,itemCode'});
  const finalTotal=Number(final.count);
  if(total!==finalTotal)warnings.push(`获取期间 API 总数从 ${total} 变为 ${finalTotal}，商品数据发生变化。`);
  if(collected.size!==finalTotal)warnings.push(`去重后 ${collected.size} 件，与 API 当前总数 ${finalTotal} 件不一致。`);
@@ -153,7 +171,7 @@ async function retrieveAll(query,signal,onPage,notify,request=fetchPage,pause=de
 }
 
 (() => {
- const $=id=>document.getElementById(id);let products=[],selected=new Set(),current='',controller=null,viewPage=1;
+ const $=id=>document.getElementById(id);let products=[],selected=new Set(),current='',controller=null,viewPage=1,tableStamp='';
  function message(text,error=false){$('status').textContent=text;$('status').className=error?'error':'';}
  function key(p){return p.apiCode||p.url;}
  function visible(){const term=$('filter').value.trim().toLowerCase();if(!term)return products;return products.filter(p=>`${p.id} ${p.name} ${p.apiCode} ${p.caption}`.toLowerCase().includes(term));}
@@ -161,17 +179,17 @@ async function retrieveAll(query,signal,onPage,notify,request=fetchPage,pause=de
  function updateSelection(){const list=visible(),count=chosen().length;$('counter').textContent=`${products.length} 件商品 · 显示 ${list.length} 件 · 选中 ${count} 件`;for(const id of ['copyUrls','copyInfo','exportCsv'])$(id).disabled=count===0;$('selectAll').disabled=!list.length;$('selectAll').checked=!!list.length&&count===list.length;$('selectAll').indeterminate=count>0&&count<list.length;}
  function cell(tr,text,className=''){const td=document.createElement('td');td.textContent=text;td.className=className;tr.append(td);return td;}
  function link(href,text){const a=document.createElement('a');a.href=href;a.textContent=text;a.target='_blank';a.rel='noopener noreferrer';return a;}
- function showDetail(p){current=key(p);$('detail').hidden=false;$('facts').replaceChildren();$('images').replaceChildren();const values=[['商品管理番号 / URL ID',p.id],['API itemCode',p.apiCode],['商品名',p.name],['キャッチコピー',p.catchcopy],['价格',p.price===''?'未返回':`${p.price} 日元`],['状态',availabilityText(p.available)],['说明版本',p.carrier],['商品 URL',p.url]];for(const [label,value]of values){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;if(label==='商品 URL'&&value)dd.append(link(value,value));else dd.textContent=value||'未返回';$('facts').append(dt,dd);}for(const url of p.images){const a=link(url,'');const img=document.createElement('img');img.src=url;img.alt=p.name;img.loading='lazy';a.append(img);$('images').append(a);}if(!p.images.length)$('images').textContent='API 未返回图片';$('caption').textContent=p.caption||'API 未返回商品说明';for(const row of $('results').children)row.classList.toggle('active',row.dataset.key===current);}
- function render(){const body=$('results');body.replaceChildren();const list=visible();if(!list.length){const tr=document.createElement('tr');const td=cell(tr,products.length?'没有符合筛选条件的商品。':'尚无商品结果。','empty');td.colSpan=6;body.append(tr);}const pageCount=Math.max(1,Math.ceil(list.length/100));viewPage=Math.min(viewPage,pageCount);$('resultPage').textContent=`第 ${viewPage} / ${pageCount} 页`;$('prevResults').disabled=viewPage<=1;$('nextResults').disabled=viewPage>=pageCount;for(const p of list.slice((viewPage-1)*100,viewPage*100)){const tr=document.createElement('tr');tr.dataset.key=key(p);tr.classList.toggle('active',key(p)===current);const check=document.createElement('input');check.type='checkbox';check.checked=selected.has(key(p));check.setAttribute('aria-label',`选择 ${p.id||p.name}`);check.onchange=()=>{check.checked?selected.add(key(p)):selected.delete(key(p));updateSelection();};cell(tr,'').append(check);const imageCell=cell(tr,'');if(p.images[0]){const img=document.createElement('img');img.src=p.images[0];img.alt='';img.loading='lazy';img.className='thumb';imageCell.append(img);}else imageCell.textContent='无图';cell(tr,p.id||'未返回','id');const nameCell=cell(tr,'','name'),button=document.createElement('button');button.className='title-button';button.textContent=p.name||'无商品名';button.onclick=()=>{showDetail(p);$('detail').scrollIntoView({behavior:'smooth',block:'start'});};nameCell.append(button);if(p.url){nameCell.append(document.createElement('br'),link(p.url,'商品页面'));}cell(tr,p.price===''?'—':`¥${p.price}`);const action=document.createElement('button');action.textContent='复制资料';action.onclick=()=>copy(toInfo(p),'已复制这件商品的补录资料。');cell(tr,'').append(action);body.append(tr);}updateSelection();}
+ function showDetail(p){current=key(p);$('detail').hidden=false;$('facts').replaceChildren();const values=[['商品管理番号 / URL ID',p.id],['API itemCode',p.apiCode],['商品名',p.name],['キャッチコピー',p.catchcopy],['说明版本',p.carrier],['商品 URL',p.url]];for(const [label,value]of values){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;if(label==='商品 URL'&&value)dd.append(link(value,value));else dd.textContent=value||'未返回';$('facts').append(dt,dd);}$('caption').textContent=p.caption||'API 未返回商品说明';for(const row of $('results').children)row.classList.toggle('active',row.dataset.key===current);}
+ function render(){const body=$('results');const list=visible();const shown=list.slice((Math.min(viewPage,Math.max(1,Math.ceil(list.length/100)))-1)*100,Math.min(viewPage,Math.max(1,Math.ceil(list.length/100)))*100);const stamp=JSON.stringify([products.length===0,current,shown.map(p=>[key(p),selected.has(key(p))])]);const redraw=stamp!==tableStamp;tableStamp=stamp;if(redraw)body.replaceChildren();if(redraw&&!list.length){const tr=document.createElement('tr');const td=cell(tr,products.length?'没有符合筛选条件的商品。':'尚无商品结果。','empty');td.colSpan=4;body.append(tr);}const pageCount=Math.max(1,Math.ceil(list.length/100));viewPage=Math.min(viewPage,pageCount);$('resultPage').textContent=`第 ${viewPage} / ${pageCount} 页`;$('prevResults').disabled=viewPage<=1;$('nextResults').disabled=viewPage>=pageCount;if(redraw)for(const p of shown){const tr=document.createElement('tr');tr.dataset.key=key(p);tr.classList.toggle('active',key(p)===current);const check=document.createElement('input');check.type='checkbox';check.checked=selected.has(key(p));check.setAttribute('aria-label',`选择 ${p.id||p.name}`);check.onchange=()=>{check.checked?selected.add(key(p)):selected.delete(key(p));updateSelection();};cell(tr,'').append(check);cell(tr,p.id||'未返回','id');const nameCell=cell(tr,'','name'),button=document.createElement('button');button.className='title-button';button.textContent=p.name||'无商品名';button.onclick=()=>{showDetail(p);$('detail').scrollIntoView({behavior:'smooth',block:'start'});};nameCell.append(button);if(p.url){nameCell.append(document.createElement('br'),link(p.url,'商品页面'));}const action=document.createElement('button');action.textContent='复制资料';action.onclick=()=>copy(toInfo(p),'已复制这件商品的补录资料。');cell(tr,'').append(action);body.append(tr);}updateSelection();}
  async function copy(text,success){try{if(!navigator.clipboard)throw Error('当前浏览器不支持复制，请使用 HTTPS 页面。');await navigator.clipboard.writeText(text);message(success);}catch(e){message(`复制失败：${e.message}。可尝试导出 CSV。`,true);}}
  function running(value){$('search').disabled=value;$('allShop').disabled=value;$('stop').disabled=!value;for(const id of ['shop','keyword','excluded','maxPages','availability','carrier','applicationId','accessKey'])$(id).disabled=value;}
  $('searchForm').onsubmit=async event=>{event.preventDefault();if(controller)return;const allShop=event.submitter?.id!=='search';let query;try{query={applicationId:$('applicationId').value.trim(),accessKey:$('accessKey').value.trim(),shop:parseShop($('shop').value),keyword:$('keyword').value.trim(),excluded:$('excluded').value.trim(),maxPages:Number($('maxPages').value),availability:$('availability').value,carrier:$('carrier').value};if(!query.applicationId||!query.accessKey)throw Error('请填写 Application ID 和 Access Key。');}catch(e){message(e.message,true);return;}
-  controller=new AbortController();viewPage=1;products=[];selected=new Set();current='';$('filter').value='';$('detail').hidden=true;$('credentials').open=false;render();running(true);
-  try{const result=await (allShop?retrieveAll:retrieve)(query,controller.signal,items=>{const old=new Set(products.map(key));products=items;for(const p of products)if(!old.has(key(p)))selected.add(key(p));render();},message);message(allShop?(result.incomplete?`全店分批获取结束，但尚未确认完整。已保留 ${result.count} 件。\n${result.warnings.join('\n')}`:`全店分批获取结束，共 ${result.count} 件，与 API 查询前后总数一致。完成 ${result.batches} 批，使用 ${result.requests} 次请求。`):result.incomplete?`已获取 ${result.count} 件；API 显示共有 ${result.total} 件，结果尚不完整。请缩小关键词范围，或调整最多获取页数。`:`获取完成，共 ${result.count} 件。选中商品后可复制补录资料。`);if(products[0])showDetail(products[0]);}
+  controller=new AbortController();viewPage=1;tableStamp='';products=[];selected=new Set();current='';$('filter').value='';$('detail').hidden=true;$('credentials').open=false;render();running(true);
+  try{const result=await (allShop?retrieveAll:retrieve)(query,controller.signal,items=>{products.push(...items);for(const p of items)selected.add(key(p));render();},message);message(allShop?(result.incomplete?`全店分批获取结束，但尚未确认完整。已保留 ${result.count} 件。\n${result.warnings.join('\n')}`:`全店分批获取结束，共 ${result.count} 件，与 API 查询前后总数一致。完成 ${result.batches} 批，使用 ${result.requests} 次请求。`):result.incomplete?`已获取 ${result.count} 件；API 显示共有 ${result.total} 件，结果尚不完整。请缩小关键词范围，或调整最多获取页数。`:`获取完成，共 ${result.count} 件。选中商品后可复制补录资料。`);if(products[0])showDetail(products[0]);}
   catch(e){message(e.name==='AbortError'?`已停止，保留已获取的 ${products.length} 件商品。`:`获取失败：${e.message}\n已保留 ${products.length} 件商品，可复制或导出。`,e.name!=='AbortError');}
   finally{controller=null;running(false);}
  };
- $('stop').onclick=()=>controller?.abort();$('filter').oninput=()=>{viewPage=1;render();};$('prevResults').onclick=()=>{viewPage--;render();};$('nextResults').onclick=()=>{viewPage++;render();};
+ $('stop').onclick=()=>controller?.abort();let filterTimer;$('filter').oninput=()=>{clearTimeout(filterTimer);filterTimer=setTimeout(()=>{viewPage=1;render();},150);};$('prevResults').onclick=()=>{viewPage--;render();};$('nextResults').onclick=()=>{viewPage++;render();};
  $('selectAll').onchange=()=>{for(const p of visible())$('selectAll').checked?selected.add(key(p)):selected.delete(key(p));render();};
  $('copyUrls').onclick=()=>{const urls=chosen().map(p=>p.url).filter(Boolean);if(!urls.length)return message('所选商品没有可复制的 URL。',true);copy(urls.join('\n'),`已复制 ${urls.length} 个商品 URL。`);};
  $('copyInfo').onclick=()=>copy(chosen().map(toInfo).join('\n\n────────────────────\n\n'),`已复制 ${chosen().length} 件商品的补录资料，可直接粘贴。`);
