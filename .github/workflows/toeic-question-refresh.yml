@@ -1,0 +1,37 @@
+name: TOEIC Studio - Daily Original Question Refresh
+on:
+  schedule:
+    - cron: '10 23 * * *'  # about 08:10 JST, may be delayed by GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: toeic-question-feed
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate original questions (only with optional secret)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4.1-mini' }}
+        run: python toeic/scripts/generate_questions.py
+      - name: Commit new questions
+        run: |
+          if git diff --quiet -- toeic/data/updates.json; then
+            echo "No new questions (or OPENAI_API_KEY is not configured)."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add toeic/data/updates.json
+          git commit -m "chore(toeic): refresh original practice questions"
+          git push
